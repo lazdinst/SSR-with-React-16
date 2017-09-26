@@ -6,12 +6,31 @@
   "author": "Ian Mobley <ianmobley@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node server"
+    "start": "node dist/bundle.js",
+    "start:dev": "nodemon server/index.js --exec babel-node",
+    "build:client": "webpack --config webpack.client.config.js",
+    "build:server": "webpack -p --config webpack.server.config.js"
   },
   "dependencies": {
     "ejs": "^2.5.7",
     "express": "^4.15.5",
+    "morgan": "^1.8.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "nodemon": "^1.12.1",
+    "webpack": "^3.6.0"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "react"
+    ]
   }
 }
