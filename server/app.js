@@ -24,7 +24,7 @@ var renderPage = function(view, state = {}) {
         <title>Server Side Rendering Test</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
         <script type="text/javascript">
-          var __INITIAL_STATE__ = ${JSON.stringify(state)};
+          var __INITIAL_STATE__ = ${JSON.stringify(state).replace(/</g, '\\u003c')};
         </script>
       </head>
       <body>
