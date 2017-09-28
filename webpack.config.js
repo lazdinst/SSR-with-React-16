@@ -29,7 +29,7 @@ module.exports = [
     entry: path.join(__dirname, 'server/index.js'),
     output: {
       path: path.join(__dirname, 'dist'),
-      filename: 'bundle.js',
+      filename: 'index.js',
     },
     module: {
       loaders: [

@@ -6,7 +6,7 @@
   "author": "Ian Mobley <ianmobley@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/bundle.js",
+    "start": "node dist/index.js",
     "start:dev": "babel-node server/index.js",
     "build": "webpack"
   },
