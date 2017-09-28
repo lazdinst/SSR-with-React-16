@@ -14,9 +14,6 @@ app.use(morgan('dev'));
 
 app.use(compression());
 
-// app.set('view engine', 'ejs');
-// app.set('views', path.join(__dirname, 'views'));
-
 app.use(express.static('public'));
 
 var renderPage = function(view, state = {}) {
