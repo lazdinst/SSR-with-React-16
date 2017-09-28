@@ -8,8 +8,7 @@
   "scripts": {
     "start": "node dist/bundle.js",
     "start:dev": "babel-node server/index.js",
-    "build:dev": "webpack -d",
-    "build:prod": "webpack -p"
+    "build": "webpack"
   },
   "dependencies": {
     "compression": "^1.7.1",
@@ -26,7 +25,8 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "nodemon": "^1.12.1",
-    "webpack": "^3.6.0"
+    "webpack": "^3.6.0",
+    "webpack-node-externals": "^1.6.0"
   },
   "babel": {
     "presets": [

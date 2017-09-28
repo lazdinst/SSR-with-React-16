@@ -1,4 +1,5 @@
 const path = require('path');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = [
   {
@@ -16,11 +17,15 @@ module.exports = [
           loader: 'babel-loader',
         }
       ],
+    },
+    resolve: {
+      extensions: ['.js', '.json', '.jsx']
     }
   },
   {
     name: 'server',
     target: 'node',
+    externals: [nodeExternals()],
     entry: path.join(__dirname, 'server/index.js'),
     output: {
       path: path.join(__dirname, 'dist'),
@@ -34,6 +39,9 @@ module.exports = [
           loader: 'babel-loader',
         },
       ]
+    },
+    resolve: {
+      extensions: ['.js', '.json', '.jsx']
     }
   },
 ];
