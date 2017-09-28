@@ -7,15 +7,17 @@
   "license": "MIT",
   "scripts": {
     "start": "node dist/bundle.js",
-    "start:dev": "nodemon server/index.js --exec babel-node",
-    "build:client": "webpack --config webpack.client.config.js",
-    "build:server": "webpack -p --config webpack.server.config.js"
+    "start:dev": "babel-node server/index.js",
+    "build:dev": "webpack -d",
+    "build:prod": "webpack -p"
   },
   "dependencies": {
+    "compression": "^1.7.1",
     "ejs": "^2.5.7",
     "express": "^4.15.5",
     "morgan": "^1.8.2",
     "react": "^16.0.0",
+    "react-bootstrap": "^0.31.3",
     "react-dom": "^16.0.0"
   },
   "devDependencies": {
