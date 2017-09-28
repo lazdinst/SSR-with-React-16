@@ -3,7 +3,7 @@ import {
   Navbar
 } from 'react-bootstrap';
 
-export default () => (
+const NavBar = () => (
   <Navbar collapseOnSelect>
     <Navbar.Header>
       <Navbar.Brand>
@@ -12,3 +12,5 @@ export default () => (
     </Navbar.Header>
   </Navbar>
 );
+
+export default NavBar;

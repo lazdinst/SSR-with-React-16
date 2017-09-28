@@ -5,13 +5,15 @@ import {
 
 import NavBar from './NavBar'
 
-export default () => (
-  <Grid>
-    <NavBar />
+const App = () => [
+  <NavBar key="nav" />,
+  <Grid key="main" >
     <Row>
       <Col style={{textAlign: 'center'}} smOffset={5} sm={2}>
         Hello React
       </Col>
     </Row>
   </Grid>
-);
+];
+
+export default App;
