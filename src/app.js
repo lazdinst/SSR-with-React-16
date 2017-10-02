@@ -40,7 +40,7 @@ app.get('*', (req, res) => {
   var context = {};
 
   var initialView = renderToString(
-    <StaticRouter location={req.url} context={context} >
+    <StaticRouter location={req.url} context={context}>
       <App />
     </StaticRouter>
   );
