@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import path from 'path';
 
 import React from 'react';
+import { StaticRouter } from 'react-router-dom';
 import { renderToString } from 'react-dom/server'
 
 import App from './client/components/App';
@@ -35,10 +36,24 @@ var renderPage = function(view, state = {}) {
   `;
 };
 
-app.get('/', (req, res) => {
-  var initialView = renderToString(<App />);
+app.get('*', (req, res) => {
+  var context = {};
 
-  res.send(renderPage(initialView));
+  var initialView = renderToString(
+    <StaticRouter location={req.url} context={context}>
+      <App />
+    </StaticRouter>
+  );
+
+  if (context.url) {
+    res.redirect(context.url, context.status);
+  } else {
+    if (context.status) {
+      res.status(context.status);
+    }
+
+    res.send(renderPage(initialView));
+  }
 });
 
 export default app;
