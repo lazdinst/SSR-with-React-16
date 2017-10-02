@@ -25,6 +25,10 @@ module.exports = [
   {
     name: 'server',
     target: 'node',
+    node: {
+      __dirname: true,
+      __filename: true,
+    },
     externals: [nodeExternals()],
     entry: path.join(__dirname, 'src/index.js'),
     output: {

@@ -13,31 +13,17 @@ const app = express();
 
 app.use(morgan('dev'));
 
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
 app.use(compression());
 
-app.use(express.static('public'));
-
-var renderPage = function(view, state = {}) {
-  return `
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <title>Server Side Rendering Test</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
-        <script type="text/javascript">
-          var __INITIAL_STATE__ = ${JSON.stringify(state).replace(/</g, '\\u003c')};
-        </script>
-      </head>
-      <body>
-        <div id="app">${view}</div>
-        <script type="text/javascript" src="dist/bundle.js"></script>
-      </body>
-    </html>
-  `;
-};
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('*', (req, res) => {
   var context = {};
+
+  var initialState = {};
 
   var initialView = renderToString(
     <StaticRouter location={req.url} context={context}>
@@ -52,7 +38,7 @@ app.get('*', (req, res) => {
       res.status(context.status);
     }
 
-    res.send(renderPage(initialView));
+    res.render('index', {initialView, initialState});
   }
 });
 
