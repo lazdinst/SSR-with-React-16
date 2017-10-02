@@ -45,7 +45,15 @@ app.get('*', (req, res) => {
     </StaticRouter>
   );
 
-  res.send(renderPage(initialView));
+  if (context.url) {
+    res.redirect(context.url, context.status);
+  } else {
+    if (context.status) {
+      res.status(context.status);
+    }
+
+    res.send(renderPage(initialView));
+  }
 });
 
 export default app;
