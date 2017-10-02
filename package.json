@@ -34,6 +34,8 @@
     "presets": [
       "env",
       "react"
-    ]
+    ],
+    "sourceMaps": true,
+    "retainLines": true
   }
 }
