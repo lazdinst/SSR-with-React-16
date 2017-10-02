@@ -2,12 +2,12 @@
   "name": "ssr-test",
   "version": "1.0.0",
   "description": "Server Side Rendering Test Project",
-  "main": "server/index.js",
+  "main": "src/index.js",
   "author": "Ian Mobley <ianmobley@gmail.com>",
   "license": "MIT",
   "scripts": {
     "start": "node dist/index.js",
-    "start:dev": "babel-node server/index.js",
+    "start:dev": "babel-node src/index.js",
     "build": "webpack",
     "build:client": "webpack --config-name client",
     "build:server": "webpack --config-name server"
