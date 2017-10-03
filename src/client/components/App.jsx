@@ -1,10 +1,10 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import {
-  Grid, Row, Col
+  Grid,
 } from 'react-bootstrap';
 
-import NavBar from './NavBar'
+import NavBar from './NavBar';
 import Home from './Home';
 import NotFound from './NotFound';
 

@@ -5,7 +5,7 @@ import path from 'path';
 
 import React from 'react';
 import { StaticRouter } from 'react-router-dom';
-import { renderToString } from 'react-dom/server'
+import { renderToString } from 'react-dom/server';
 
 import App from './client/components/App';
 
@@ -21,15 +21,15 @@ app.use(compression());
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('*', (req, res) => {
-  var context = {};
+  const context = {};
 
-  var initialState = {};
+  const initialState = {};
 
-  var initialView = renderToString(
+  const initialView = renderToString((
     <StaticRouter location={req.url} context={context}>
       <App />
     </StaticRouter>
-  );
+  ));
 
   if (context.url) {
     res.redirect(context.url, context.status);
@@ -38,7 +38,7 @@ app.get('*', (req, res) => {
       res.status(context.status);
     }
 
-    res.render('index', {initialView, initialState});
+    res.render('index', { initialView, initialState });
   }
 });
 

@@ -4,8 +4,8 @@ import { hydrate } from 'react-dom';
 
 import App from './components/App';
 
-hydrate(
+hydrate((
   <BrowserRouter>
     <App />
   </BrowserRouter>
-, document.getElementById('app'));
+), document.getElementById('app'));
