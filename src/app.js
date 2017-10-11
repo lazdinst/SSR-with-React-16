@@ -1,5 +1,6 @@
 import compression from 'compression';
 import express from 'express';
+import session from 'express-session';
 import morgan from 'morgan';
 import path from 'path';
 
@@ -12,6 +13,12 @@ import App from './client/components/App';
 const app = express();
 
 app.use(morgan('dev'));
+
+app.use(session({
+  secret: 'shh, it\'s a secret',
+  resave: false,
+  saveUninitialized: false,
+}));
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
