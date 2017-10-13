@@ -28,6 +28,7 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "eslint": "^4.8.0",
@@ -43,6 +44,9 @@
     "presets": [
       "env",
       "react"
+    ],
+    "plugins": [
+      "add-module-exports"
     ],
     "sourceMaps": true,
     "retainLines": true
