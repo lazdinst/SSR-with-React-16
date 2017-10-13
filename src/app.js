@@ -1,29 +1,22 @@
-import compression from 'compression';
 import express from 'express';
-import session from 'express-session';
-import morgan from 'morgan';
 import path from 'path';
 
 import React from 'react';
 import { StaticRouter } from 'react-router-dom';
 import { renderToString } from 'react-dom/server';
 
+import middleware from './middleware';
+
 import App from './client/components/App';
 
 const app = express();
 
-app.use(morgan('dev'));
-
-app.use(session({
-  secret: 'shh, it\'s a secret',
-  resave: false,
-  saveUninitialized: false,
-}));
+app.use(middleware.morgan);
+app.use(middleware.session);
+app.use(middleware.compression);
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-
-app.use(compression());
 
 app.use(express.static(path.join(__dirname, '../public')));
 
