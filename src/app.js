@@ -5,20 +5,18 @@ import React from 'react';
 import { StaticRouter } from 'react-router-dom';
 import { renderToString } from 'react-dom/server';
 
-import middleware from './middleware';
+import applyMiddleware from './middleware';
 
 import App from './client/components/App';
 
 const app = express();
 
-app.use(middleware.morgan);
-app.use(middleware.session);
-app.use(middleware.compression);
-
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static(path.join(__dirname, '../public')));
+
+applyMiddleware(app);
 
 app.get('*', (req, res) => {
   const context = {};
