@@ -1,8 +1,14 @@
-FROM node:6-alpine
+FROM node:alpine as build
+WORKDIR /usr/src/app
+COPY . .
+RUN yarn install --silent
+RUN yarn build -p
+RUN rm -r node_modules
+
+FROM node:alpine
 ENV NODE_ENV production
 WORKDIR /usr/src/app
-COPY ["package.json", "npm-shrinkwrap.json*", "./"]
-RUN npm install --production --silent && mv node_modules ../
-COPY . .
+COPY --from=build /usr/src/app .
+RUN yarn install --silent && mv node_modules ../
 EXPOSE 8080
-CMD npm start
+CMD yarn start
